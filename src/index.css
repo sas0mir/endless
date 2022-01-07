@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+body {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+/* width */
+::-webkit-scrollbar {
+  border: 1px solid #222;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  width: 4px;
+  border: 1px solid #222;
+  background: inherit;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #222;
+}
