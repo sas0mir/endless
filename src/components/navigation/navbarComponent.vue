@@ -1,15 +1,15 @@
 <template>
   <div class="nav-bar__container">
     <nav class="nav-bar">
-      <NavBarBrand />
-      <NavBarTabs />
-      <NavBarButtons />
+      <NavbarBrand />
+      <NavbarTabs />
+      <NavbarButtons />
     </nav>
   </div>
 </template>
 
 <script setup lang="ts">
-import NavBarBrand from '@/components/navigation/desktop/navbarBrand.vue'
-import NavBarButtons from '@/components/navigation/desktop/navbarButtons.vue'
-import NavBarTabs from '@/components/navigation/desktop/navbarTabs.vue'
+import NavbarBrand from '@components/navigation/NavbarBrand.vue'
+import NavbarButtons from '@components/navigation/NavbarButtons.vue'
+import NavbarTabs from '@/components/navigation/NavbarTabs.vue'
 </script>

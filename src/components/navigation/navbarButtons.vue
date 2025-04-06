@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import LoginButton from '../buttons/loginButton.vue'
+import LoginButton from '@/components/buttons/loginButton.vue'
 import LogoutButton from '../buttons/logoutButton.vue'
 import SignupButton from '../buttons/signupButton.vue'
 import { useAuth0 } from '@auth0/auth0-vue'
