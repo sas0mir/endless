@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <AppAlert>Hello bitch</AppAlert>
+  <div class="app_container">
+    <!-- <NuxtRouteAnnouncer /> -->
+     <NuxtLayout>
+      <NuxtPage />
+     </NuxtLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-//import AppAlert from './components/AppAlert.vue';
 
   const runtimeConfig = useRuntimeConfig()
   const appConfig = useAppConfig()
