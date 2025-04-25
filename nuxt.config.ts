@@ -1,10 +1,27 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-04-22',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   ssr: true,
   app: {
     baseURL: '/',
-    buildAssetsDir: '/_nuxt/'
+    buildAssetsDir: '/_nuxt/',
+    head: {
+      title: 'Aurora engine',
+      htmlAttrs: {
+        lang: 'en'
+      },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    },
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    },
+    layoutTransition: {
+      name: 'layout',
+      mode: 'out-in'
+    }
   },
   runtimeConfig: {
     apiSecret: process.env.NUXT_PRIVATE_SECRET || '1234',
@@ -39,6 +56,19 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxt/test-utils'
+    '@nuxt/test-utils',
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          'Poiret One': {
+            wght: [400],
+          },
+          'Fascinate': {
+            whgt: [400],
+          }
+        }
+      }
+    ]
   ],
 })

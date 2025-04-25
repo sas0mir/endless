@@ -41,3 +41,16 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.layout_container {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Fascinate", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  p, span, input, textarea, button {
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
