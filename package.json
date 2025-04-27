@@ -7,9 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:migrate": "pgmg 'postgres://localhost:5432/endlessdb' 'migrations/*.js"
   },
   "dependencies": {
+    "@auth/core": "^0.39.0",
     "@nuxt/content": "^3.4.0",
     "@nuxt/eslint": "^1.3.0",
     "@nuxt/fonts": "^0.11.1",
@@ -18,9 +20,15 @@
     "@nuxt/scripts": "^0.11.6",
     "@nuxt/test-utils": "^3.17.2",
     "@nuxt/ui": "^3.0.2",
+    "@pinia/nuxt": "^0.11.0",
+    "@sidebase/nuxt-auth": "^0.10.1",
     "@unhead/vue": "^2.0.8",
     "eslint": "^9.25.1",
+    "next-auth": "^4.21.1",
     "nuxt": "^3.16.2",
+    "pgmg": "^0.0.11",
+    "pinia": "^3.0.2",
+    "postgres": "^3.4.5",
     "typescript": "^5.8.3",
     "vite": "^6.3.2",
     "vue": "^3.5.13",

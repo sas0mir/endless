@@ -25,6 +25,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     apiSecret: process.env.NUXT_PRIVATE_SECRET || '1234',
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    AUTH_SECRET: process.env.AUTH_SECRET,
     public: {
       apiBase: '/api',
       cdnUrl: process.env.NUXT_PUBLIC_CDN_URL || ''
@@ -69,6 +72,8 @@ export default defineNuxtConfig({
           }
         }
       }
-    ]
+    ],
+    '@pinia/nuxt',
+    '@sidebase/nuxt-auth'
   ],
 })
