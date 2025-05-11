@@ -7,18 +7,20 @@
       <button type="submit">Enter</button>
     </form>
     <div class="login_oauth_form">
-      <button v-if="data?.user" @click="() => signOut()">Sign Out</button>
-      <button v-else @click="() => signIn('github')">Sign In</button>
-      <pre>{{ data }}</pre>
+      <button @click="signIn('google')">Sign in with Google</button>
+      <button @click="signOut()">Sign out</button>
+      <pre v-if="session.status === 'authentificated'">
+        Hello there {{ session.data?.user?.name }}!
+      </pre>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import AnimatedBackOne from '~/components/AnimatedBackOne.vue';
+import { signIn, signOut, useSession } from '#auth';
 
-const { data, signIn, signOut } = udeAuth();
-
+const session = useSession();
 function handleSubmit(formData: FormData) {
   navigateTo('/dashboard')
 }

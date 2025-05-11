@@ -25,11 +25,12 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     apiSecret: process.env.NUXT_PRIVATE_SECRET || '1234',
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-    AUTH_SECRET: process.env.AUTH_SECRET,
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    authSecret: process.env.AUTH_SECRET,
     public: {
       apiBase: '/api',
+      authJsUrl: 'http://localhost:3000',
       cdnUrl: process.env.NUXT_PUBLIC_CDN_URL || ''
     }
   },

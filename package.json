@@ -23,9 +23,11 @@
     "@pinia/nuxt": "^0.11.0",
     "@sidebase/nuxt-auth": "^0.10.1",
     "@unhead/vue": "^2.0.8",
+    "drizzle-orm": "^0.43.1",
     "eslint": "^9.25.1",
     "next-auth": "^4.21.1",
     "nuxt": "^3.16.2",
+    "pg": "^8.15.6",
     "pgmg": "^0.0.11",
     "pinia": "^3.0.2",
     "postgres": "^3.4.5",
@@ -36,6 +38,8 @@
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@types/pg": "^8.15.1",
+    "drizzle-kit": "^0.31.1",
     "sass": "^1.87.0"
   }
 }
