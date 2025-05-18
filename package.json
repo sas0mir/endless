@@ -8,7 +8,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:migrate": "pgmg 'postgres://localhost:5432/endlessdb' 'migrations/*.js"
+    "db:migrate": "pgmg 'postgres://localhost:5432/endlessdb' 'migrations/*.js",
+    "premigrate": "npx drizzle-kit generate && npx drizzle-kit migrate",
+    "migrate": "npx drizzle-kit push"
   },
   "dependencies": {
     "@auth/core": "^0.39.0",

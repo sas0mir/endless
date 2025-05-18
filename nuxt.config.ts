@@ -2,6 +2,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-04-22',
   devtools: { enabled: false },
   ssr: true,
+  routeRules: {
+    '/': { prerender: true },
+    '/api/*': { cache: { maxAge: 60 * 60 }}
+  },
   app: {
     baseURL: '/',
     buildAssetsDir: '/_nuxt/',
