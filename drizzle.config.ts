@@ -4,12 +4,12 @@ import 'dotenv/config';
 export default defineConfig ({
   schema: './server/db/schema.ts',
   out: './drizzle',
-  driver: 'd1-http',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    host: process.env.DB_HOST!,
+    port: Number(process.env.DB_PORT),
+    user: process.env.DB_USER!,
+    password: process.env.DB_PASSWORD!,
+    database: process.env.DB_NAME!,
   },
 })
-
-//make migration npx drizzle-kit generate
-//migrate npx drizzle-kit push

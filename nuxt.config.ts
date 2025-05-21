@@ -65,6 +65,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
+    'nuxt-auth-utils',
     [
       '@nuxtjs/google-fonts',
       {

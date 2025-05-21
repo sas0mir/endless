@@ -25,10 +25,14 @@
     "@pinia/nuxt": "^0.11.0",
     "@sidebase/nuxt-auth": "^0.10.1",
     "@unhead/vue": "^2.0.8",
+    "bcrypt": "^6.0.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
     "eslint": "^9.25.1",
     "next-auth": "^4.21.1",
     "nuxt": "^3.16.2",
+    "nuxt-auth-utils": "^0.5.20",
     "pg": "^8.15.6",
     "pgmg": "^0.0.11",
     "pinia": "^3.0.2",
@@ -39,9 +43,12 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@gearbox-solutions/eslint-config-gbx": "^2.0.6",
+    "@nuxt/kit": "^3.17.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@types/pg": "^8.15.1",
     "drizzle-kit": "^0.31.1",
+    "jiti": "^2.4.2",
     "sass": "^1.87.0"
   }
 }

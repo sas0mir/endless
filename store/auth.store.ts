@@ -1,29 +1,24 @@
 import { defineStore } from 'pinia';
+import type IUser from '~/types/User';
 
-interface IAuthStore {
-  name: string,
-  email: string,
-  status: boolean
-}
-
-const defaultValue: { user: IAuthStore } = {
+const defaultValue: { user: IUser } = {
   user: {
+    id: 0,
     name: '',
     email: '',
-    status: false
   }
 }
 
 export const useAuthStore = defineStore('auth', {
   state: () => defaultValue,
   getters: {
-    isAuth: state => state.user.status
+    isAuth: state => state.user.id
   },
   actions: {
     clear() {
       this.$patch(defaultValue)
     },
-    set(input: IAuthStore) {
+    set(input: IUser) {
       this.$patch({user: input})
     }
   }
