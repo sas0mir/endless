@@ -1,3 +1,5 @@
+import { defineAppConfig } from 'nuxt/app'
+
 export default defineAppConfig({
   title: 'Endless engine',
   theme: {

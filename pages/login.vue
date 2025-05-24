@@ -6,21 +6,19 @@
       <input type="text" placeholder="password" name="password" />
       <button type="submit">Enter</button>
     </form>
-    <div class="login_oauth_form">
+    <!-- <div class="login_oauth_form">
       <button @click="signIn('google')">Sign in with Google</button>
       <button @click="signOut()">Sign out</button>
       <pre v-if="session.status === 'authentificated'">
         Hello there {{ session.data?.user?.name }}!
       </pre>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import AnimatedBackOne from '~/components/AnimatedBackOne.vue';
-import { signIn, signOut, useSession } from '#auth';
+import AnimatedBackOne from '~/components/AnimatedBackOne.client.vue';
 
-const session = useSession();
 function handleSubmit(formData: FormData) {
   navigateTo('/dashboard')
 }
