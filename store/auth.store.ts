@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type IUser from '~/types/User';
+import type IUser from '../types/User';
 
 const defaultValue: { user: IUser } = {
   user: {

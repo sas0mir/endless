@@ -1,4 +1,4 @@
-import { defineAppConfig } from 'nuxt/app'
+//import { defineAppConfig } from 'nuxt/app'
 
 export default defineAppConfig({
   title: 'Endless engine',

@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ ssr: false});
 import type { NuxtError } from '#app';
 //import { showError } from '#app';
 

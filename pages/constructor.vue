@@ -3,4 +3,5 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ ssr: false });
 </script>

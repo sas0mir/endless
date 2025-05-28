@@ -18,7 +18,4 @@
 
   import '~/assets/styles/app_style.scss';
 
-  //const runtimeConfig = useRuntimeConfig()
-  //const appConfig = useAppConfig()
-  //console.log('RUNTIME-CONFIG->', runtimeConfig, '/nAPP-CONFIG->', appConfig)
 </script>

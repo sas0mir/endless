@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import AnimatedBackOne from '~/components/AnimatedBackOne.client.vue';
+import AnimatedBackOne from '../components/AnimatedBackOne.client.vue';
 
 function handleSubmit(formData: FormData) {
   navigateTo('/dashboard')
