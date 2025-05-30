@@ -1,6 +1,17 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  // const session = useSession();
-  // if (!session.value?.data?.user) {
-  //   return navigateTo('/login')
-  // }
+  const {
+    status,
+    data,
+    lastRefreshed,
+    getCsrfToken,
+    getProviders,
+    getSession,
+    signIn,
+    signOut,
+  } = useAuth();
+
+  if (status.value === 'unauthenticated') {
+    // Redirect to login page if not authenticated
+    return navigateTo('/login');
+  }
 })

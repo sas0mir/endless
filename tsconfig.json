@@ -1,3 +1,8 @@
 {
   "extends": "./.nuxt/tsconfig.json",
+  "include": [
+    "types",
+    "nuxt.config.ts",
+    "app.config.ts",
+  ]
 }
