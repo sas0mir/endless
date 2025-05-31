@@ -1,3 +1,7 @@
+import { db } from './server/utils/db';
+import { users } from './server/db/schema';
+import bcrypt from 'bcrypt';
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-04-22',
   devtools: { enabled: false },
@@ -68,8 +72,14 @@ export default defineNuxtConfig({
     provider: {
       credentials: {
         authorize: async (credentials) => {
-          const { email, password } = credentials;
-          return {email, password}
+          const user = await db.query.users.findFirst({
+            where: (user, { eq }) => eq(user.email, credentials.email)
+          });
+          if (!user) return null;
+          const isValid = await bcrypt.compare(credentials.password, user.password);
+          if (!isValid) return null;
+
+          return {id: user.id, email: user.email, name: user.name || 'User'};
         }
       },
       google: {
