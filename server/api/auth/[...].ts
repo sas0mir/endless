@@ -1,3 +1,3 @@
-import NuxtAuthHandler from '#auth'
+import { NuxtAuthHandler } from '#auth'
 
 export default NuxtAuthHandler()
