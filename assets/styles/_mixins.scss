@@ -1,0 +1,23 @@
+@mixin mobile {
+  @layer mobile {
+    @media (max-width: map_get($breakpoints, mobile)) {
+      @content;
+    }
+  }
+}
+
+@mixin tablet {
+  @layer tablet {
+    @media (min-width: map_get($breakpoints, mobile)) and (max-width: map_get($breakpoints, tablet)) {
+      @content;
+    }
+  }
+}
+
+@mixin desktop {
+  @layer desktop {
+    @media (min-width: map_get($breakpoints, tablet)) and (max-width: map_get($breakpoints, desktop)) {
+      @content;
+    }
+  }
+}

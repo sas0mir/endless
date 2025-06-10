@@ -1,0 +1,47 @@
+@layer mobile, tablet, desktop;
+
+$breakpoints: (
+  mobile: 320px,
+  tablet: 768px,
+  desktop: 1024px
+);
+
+// Основные цвета
+$k-primary: #FF6F61;         // яркий коралл
+$k-secondary: #FFD93D;       // солнечный жёлтый
+$k-accent: #6BCB77;          // весёлый зелёный
+$k-background: #FFF8E7;      // светлый теплый фон
+$k-text-primary: #3D348B;    // насыщенный фиолетовый
+$k-text-secondary: #6A0572;  // яркий пурпур
+
+// Статусы
+$k-text-success: #28a745;
+$k-text-error: #E63946;
+$k-text-warning: #FF9F1C;
+
+// Элементы UI
+$k-button-primary-bg: $k-primary;
+$k-button-primary-text: #ffffff;
+$k-input-border: #ddd;
+$k-input-focus: $k-secondary;
+
+// _theme-strict.scss
+
+// Основные цвета
+$s-primary: #0A84FF;         // синий Apple
+$s-secondary: #E5E5EA;       // светло-серый
+$s-accent: #32D74B;          // зелёный подтверждения
+$s-background: #F9F9F9;      // белый с оттенком
+$s-text-primary: #1C1C1E;    // почти чёрный
+$s-text-secondary: #636366;  // приглушённый серый
+
+// Статусы
+$s-text-success: #32D74B;
+$s-text-error: #FF3B30;
+$s-text-warning: #FFD60A;
+
+// Элементы UI
+$s-button-primary-bg: $s-primary;
+$s-button-primary-text: #ffffff;
+$s-input-border: #C7C7CC;
+$s-input-focus: $s-primary;

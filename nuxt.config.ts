@@ -53,10 +53,18 @@ export default defineNuxtConfig({
       }
     },
     vue: {
-      customElement: true
+      customElement: false
     },
     vueJsx: {
       mergeProps: true
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/styles/_variables.scss" as *;
+                            @use "@/assets/styles/_mixins.scss" as *;`
+        }
+      }
     }
   },
   auth: {
@@ -67,7 +75,7 @@ export default defineNuxtConfig({
     basePath: '/api/auth',
     defaultProvider: 'credentials',
     baseURL: 'http://localhost:3000/api/auth',
-    globalAppMiddleware: true,
+    globalAppMiddleware: false,
     enableGlobalAppMiddleware: true,
     provider: {
       credentials: {
@@ -86,43 +94,6 @@ export default defineNuxtConfig({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       }
-      // type: 'local',
-      // token: {
-      //   signInResponseTokenPointer: '/token',
-      //   type: 'Bearer',
-      //   cookieName: 'auth.token',
-      //   headerName: 'Authorization',
-      //   maxAgeSeconds: 1800, // 30 minutes
-      //   sameSiteAttribute: 'lax',
-      //   cookieDomain: 'sidebase.io',
-      //   secureCookieAttribute: false,
-      //   httpOnlyCookieAttribute: false,
-      // },
-      // refresh: {
-      //   isEnabled: true,
-      //   endpoint: { path: '/refresh', method: 'post' },
-      //   refreshOnlyToken: true,
-      //   token: {
-      //     signInResponseRefreshTokenPointer: '/refresh-token',
-      //     refreshResponseTokenPointer: '',
-      //     refreshRequestTokenPointer: '/refresh-token',
-      //     cookieName: 'auth.token',
-      //     maxAgeSeconds: 129600, // 18 hours
-      //     sameSiteAttribute: 'lax',
-      //     secureCookieAttribute: false,
-      //     cookieDomain: 'sidebase.io',
-      //     httpOnlyCookieAttribute: false,
-      //   }
-      // },
-      // pages: {
-      //   login: '/login',
-      // },
-      // endpoints: {
-      //   singIn: {path: '/login', method: 'post'},
-      //   signOut: {path: '/logout', method: 'post'},
-      //   signUp: {path: '/register', method: 'post'},
-      //   getSession: {path: '/session', method: 'get'}
-      // }
     },
     sessionRefresh: {
       enablePeriodically: true,
@@ -130,6 +101,9 @@ export default defineNuxtConfig({
     }
   },
   components: true,
+  css: [
+    '@/assets/styles/main.css'
+  ],
   modules: [
     '@nuxt/ui',
     '@nuxt/content',
