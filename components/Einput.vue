@@ -1,62 +1,120 @@
-<template>
-  <div :class="styles.input_container">
-    <input
-      v-model="modelValue"
-      :placeholder="placeholder"
-      :type="type"
-      :class="styles.input"
-      @input="$emit('update:modelValue', $event.target.value)"
-    />
-    <p v-if="error" :class="styles.error">{{ error }}</p>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { ref, useCssModule } from 'vue';
+import { computed, ref, watch } from 'vue'
+const styles = useCssModule();
 
-defineProps({
-  // modelValue: {
-  //   type: String,
-  //   default: ''
-  // },
-  placeholder: {
+const props = defineProps({
+  modelValue: {
     type: String,
-    default: 'Enter text'
+    required: true
+  },
+  label: {
+    type: String,
+    default: ''
+  },
+  required: {
+    type: Boolean,
+    default: false
   },
   type: {
     type: String,
     default: 'text'
   },
-  error: {
+  placeholder: {
     type: String,
     default: ''
+  },
+  rules: {
+    type: Array as () => Array<(val: string) => string | true>,
+    default: () => []
   }
-});
+})
 
-const styles = useCssModule();
+const emit = defineEmits(['update:modelValue', 'blur'])
 
+const internalValue = ref(props.modelValue)
+const errorMessage = ref<string | null>(null)
+
+watch(() => props.modelValue, (val) => {
+  internalValue.value = val
+})
+
+function validate(): boolean {
+  errorMessage.value = null
+
+  if (props.required && !internalValue.value) {
+    errorMessage.value = 'Поле обязательно'
+    return false
+  }
+
+  for (const rule of props.rules) {
+    const result = rule(internalValue.value)
+    if (result !== true) {
+      errorMessage.value = result
+      return false
+    }
+  }
+
+  return true
+}
+
+function onInput(event: Event) {
+  const target = event.target as HTMLInputElement
+  internalValue.value = target.value
+  emit('update:modelValue', internalValue.value)
+}
+
+function onBlur() {
+  validate()
+  emit('blur')
+}
+
+defineExpose({ validate }) // если хочешь валидировать вручную снаружи
 </script>
 
-<style lang="scss" module>
+<template>
+  <div :class="styles.input_container">
+    <label v-if="label">{{ label }}</label>
+    <input
+      :type="type"
+      :value="internalValue"
+      :placeholder="placeholder"
+      @input="onInput"
+      @blur="onBlur"
+    />
+    <p v-if="errorMessage" :class="styles.error">{{ errorMessage }}</p>
+  </div>
+</template>
 
+<style lang="scss" module>
+// @use 'assets/styles/variables' as *;
 .input_container {
   position: relative;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
 
-  .input {
-    width: 100%;
-    padding: 10px;
+  input {
+    padding: 1rem;
+    font-size: 1rem;
     border: none;
-    border-bottom: 1px solid #ccc;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    border-bottom: 1px solid $s-input-border;
+    color: $s-text-primary;
 
     &:focus {
-      border-color: #007bff;
       outline: none;
+      border-color: $s-input-focus;
+    }
+    &::placeholder {
+      color: $s-text-success;
     }
   }
+  .error {
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    color: $s-text-error;
+    font-size: 1rem;
+  }
 }
-
-
 </style>

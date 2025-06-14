@@ -2,8 +2,17 @@
   <div :class="styles.login_container">
     <AnimatedBackOne xtra-class="login_background"/>
     <form :class="styles.login_form" @submit.prevent="handleSubmit">
-      <Einput v-model="email" placeholder="username or email" />
-      <Einput v-model="password" placeholder="password" type="password" />
+      <Einput
+        v-model="email"
+        placeholder="username or email"
+        required
+        :rules="emailRules" />
+      <Einput
+        v-model="password"
+        placeholder="password"
+        type="password"
+        required
+        :rules="passwordRules" />
       <button type="submit">Enter</button>
     </form>
     <hr />
@@ -23,6 +32,15 @@ const { signIn } = useAuth();
 const email = ref('');
 const password = ref('');
 const error = ref('');
+
+const emailRules = [
+  (value: string) => !!value || 'Email is required',
+  (value: string) => /^\S+@\S+\.\S+$/.test(value) || 'Invalid email format',
+];
+const passwordRules = [
+  (value: string) => !!value || 'Password is required',
+  (value: string) => value.length >= 6 || 'Password must be at least 6 characters long',
+];
 
 const handleSubmit = async (formData: FormData) => {
   const result = await signIn('credentials', {
