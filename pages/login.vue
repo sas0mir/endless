@@ -1,6 +1,8 @@
 <template>
   <div :class="styles.login_container">
-    <AnimatedBackOne xtra-class="login_background"/>
+    <client-only>
+      <AnimatedBackOne xtra-class="login_background"/>
+    </client-only>
     <form :class="styles.login_form" @submit.prevent="handleSubmit">
       <Einput
         v-model="email"
