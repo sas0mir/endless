@@ -3,7 +3,26 @@
     <client-only>
       <AnimatedBackOne xtra-class="login_background"/>
     </client-only>
-    <form :class="styles.login_form" @submit.prevent="handleSubmit">
+    <form v-if="registrationMode" :class="styles.login_form" @submit.prevent="handleSubmit">
+      <Einput
+        v-model="email"
+        placeholder="create username"
+        required
+        :rules="usernameRules" />
+      <Einput
+        v-model="email"
+        placeholder="email"
+        required
+        :rules="emailRules" />
+      <Einput
+        v-model="password"
+        placeholder="create password"
+        type="password"
+        required
+        :rules="passwordRules" />
+      <button type="submit">Enter</button>
+    </form>
+    <form v-else :class="styles.login_form" @submit.prevent="handleSubmit">
       <Einput
         v-model="email"
         placeholder="username or email"
@@ -19,6 +38,7 @@
     </form>
     <hr />
     <p :class="styles.error" v-if="error">{{ error }}</p>
+    <button @click="switchToRegistration">{{registrationMode ? 'Login' : 'Register'}}</button>
     <button @click="googleLogin">Sign in with Google</button>
   </div>
 </template>
@@ -26,6 +46,7 @@
 <script setup lang="ts">
 import AnimatedBackOne from '../components/AnimatedBackOne.client.vue';
 import Einput from '../components/Einput.vue';
+import Debouncer from '../components/Debouncer.ts';
 import { ref, useCssModule } from 'vue';
 
 const styles = useCssModule();
@@ -34,6 +55,7 @@ const { signIn } = useAuth();
 const email = ref('');
 const password = ref('');
 const error = ref('');
+const registrationMode = ref(false);
 
 const emailRules = [
   (value: string) => !!value || 'Email is required',
@@ -43,6 +65,22 @@ const passwordRules = [
   (value: string) => !!value || 'Password is required',
   (value: string) => value.length >= 6 || 'Password must be at least 6 characters long',
 ];
+const usernameRules = [
+  (value: string) => !!value || 'Username is required',
+  (value: string) => {
+    let result: string | true = !!value || 'Username is required';
+    //debounce database username check
+    Debouncer(async () => {
+      const response = await fetch(`/api/check-username?username=${value}`);
+      const data = await response.json();
+      result = data.available ? true : 'Username is already taken';
+    }, 500);
+    return result;
+  }
+];
+const switchToRegistration = () => {
+  registrationMode.value = !registrationMode.value;
+}
 
 const handleSubmit = async (formData: FormData) => {
   const result = await signIn('credentials', {
