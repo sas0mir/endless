@@ -35,7 +35,8 @@ export default defineNuxtConfig({
     apiSecret: process.env.NUXT_PRIVATE_SECRET || '1234',
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    authSecret: process.env.AUTH_SECRET,
+    authSecret: process.env.NUXT_AUTH_SECRET,
+    sslCertPath: process.env.SSL_CERT_PATH || '/app/certs/root.crt',
     public: {
       apiBase: '/api',
       authJsUrl: 'http://localhost:3000',
@@ -70,6 +71,7 @@ export default defineNuxtConfig({
   auth: {
     idEnabled: true,
     disableServerSideAuth: false,
+    secret: process.env.NUXT_AUTH_SECRET,
     originEnvKey: 'AUTH_ORIGIN',
     origin: 'http://localhost:3000',
     basePath: '/api/auth',

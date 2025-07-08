@@ -7,8 +7,11 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+COPY certs ./certs
 
 RUN npm run build
+
+RUN cp -r certs .output/certs
 
 EXPOSE 3000
 
