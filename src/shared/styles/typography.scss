@@ -1,0 +1,8 @@
+@use "./variables" as *;
+
+.font-dialog-header {
+  font-family: $font-titles;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+

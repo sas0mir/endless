@@ -40,14 +40,14 @@ export default function LoginPage() {
             }}
         >
             <CyberBackground />
-            <canvas
-                id="cyber-bg"
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    zIndex: 0
-                }}
-            />
+            {/*<canvas*/}
+            {/*    id="cyber-bg"*/}
+            {/*    style={{*/}
+            {/*        position: "absolute",*/}
+            {/*        inset: 0,*/}
+            {/*        zIndex: 0*/}
+            {/*    }}*/}
+            {/*/>*/}
 
             <form
                 onSubmit={handleSubmit}
@@ -63,7 +63,7 @@ export default function LoginPage() {
                     minWidth: "280px"
                 }}
             >
-                <h2 style={{ marginBottom: "8px" }}>Endless Login</h2>
+                <h2 className="font-dialog-header">Welcome to ENDLESS</h2>
 
                 <input
                     placeholder="Email"

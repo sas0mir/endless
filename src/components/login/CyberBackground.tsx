@@ -1,5 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
+import { PlayIcon, SquarePauseIcon } from "lucide-react";
+import { Button2d } from "@/components/reusable";
 import { useRef, useState, useEffect } from "react"
 import * as THREE from "three"
 
@@ -81,10 +83,8 @@ export default function CyberBackground() {
 
         if (audioRef.current.paused) {
             audioRef.current.play()
-            console.log('PLAY');
         } else {
             audioRef.current.pause()
-            console.log('PAUSE');
         }
     }
 
@@ -129,18 +129,7 @@ export default function CyberBackground() {
                     zIndex: 2
                 }}
             >
-                <button
-                    onClick={toggleAudio}
-                    style={{
-                        padding: "8px 14px",
-                        background: "black",
-                        color: "#00ff9c",
-                        border: "1px solid #00ff9c",
-                        cursor: "pointer"
-                    }}
-                >
-                    music
-                </button>
+                <Button2d text="toggle music" onClick={toggleAudio} icon={<PlayIcon />} />
 
                 <input
                     type="range"

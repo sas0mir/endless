@@ -1,5 +1,16 @@
 //fonts
 :root {
-  --font-titles: "Bangers", system-ui, sans-serif;
-  --font-elements: "Comic Relief", system-ui;
+  $font-titles: "Bangers", system-ui, sans-serif;
+  $font-elements: "Comic Relief", system-ui;
+
 }
+
+//fonts
+$font-titles: "Bangers", system-ui, sans-serif;
+$font-elements: "Comic Relief", system-ui;
+
+//colors
+$color-light-default: #F2EFE7;
+$color-light-primary: #9ACBD0;
+$color-light-secondary: #48A6A7;
+$color-light-elementary: #2973B2;
