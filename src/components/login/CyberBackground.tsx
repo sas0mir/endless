@@ -1,9 +1,10 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
-import { PlayIcon, SquarePauseIcon } from "lucide-react";
-import { Button2d } from "@/components/reusable";
+import { PlayIcon } from "lucide-react";
+import { Button2d, Range2d } from "@/components/reusable";
 import { useRef, useState, useEffect } from "react"
 import * as THREE from "three"
+import styles from "./styles.module.scss"
 
 function Cube() {
     const group = useRef<THREE.Group>(null!)
@@ -26,7 +27,7 @@ function Cube() {
             <mesh>
                 <boxGeometry args={[3, 3, 3]} />
                 <meshBasicMaterial
-                    color="#00ff9c"
+                    color="#48A6A7"
                     wireframe
                     transparent
                     opacity={0.9}
@@ -34,10 +35,10 @@ function Cube() {
             </mesh>
 
             {/* glow cube */}
-            <mesh scale={1.03}>
+            <mesh scale={1.02}>
                 <boxGeometry args={[3, 3, 3]} />
                 <meshBasicMaterial
-                    color="#00ff9c"
+                    color="#2973B2"
                     wireframe
                     transparent
                     opacity={0.25}
@@ -117,31 +118,18 @@ export default function CyberBackground() {
                 loop
                 autoPlay
             />
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: "20px",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    display: "flex",
-                    gap: "12px",
-                    alignItems: "center",
-                    zIndex: 2
-                }}
-            >
-                <Button2d text="toggle music" onClick={toggleAudio} icon={<PlayIcon />} />
-
-                <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.01"
+            <div className={styles.footer}>
+                <Button2d onClick={toggleAudio} icon={<PlayIcon className="icon-component" />} tooltip="toggle music" />
+                <Range2d
+                    label="Volume"
+                    labelPosition="left"
+                    min={0}
+                    max={1}
+                    step={0.05}
                     value={volume}
                     onChange={(e) => setVolume(Number(e.target.value))}
-                    style={{
-                        cursor: "pointer"
-                    }}
                 />
+
             </div>
         </>
     )

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAuthStore } from "@/store/auth.store";
 import CyberBackground from "@/components/login/CyberBackground.tsx";
+import { InputText, Button2d } from "@/components/reusable";
+import styles from "./styles.module.scss";
 
 export default function LoginPage() {
     const { login } = useAuthStore();
@@ -27,81 +29,17 @@ export default function LoginPage() {
     };
 
     return (
-        <main
-            style={{
-                height: "100vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "black",
-                color: "#00ff9c",
-                position: "relative",
-                overflow: "hidden"
-            }}
-        >
+        <main className={styles.container}>
             <CyberBackground />
-            {/*<canvas*/}
-            {/*    id="cyber-bg"*/}
-            {/*    style={{*/}
-            {/*        position: "absolute",*/}
-            {/*        inset: 0,*/}
-            {/*        zIndex: 0*/}
-            {/*    }}*/}
-            {/*/>*/}
 
             <form
                 onSubmit={handleSubmit}
-                style={{
-                    position: "relative",
-                    zIndex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "12px",
-                    padding: "32px",
-                    border: "1px solid #00ff9c",
-                    background: "rgba(0,0,0,0.7)",
-                    minWidth: "280px"
-                }}
+                className={styles.form}
             >
-                <h2 className="font-dialog-header">Welcome to ENDLESS</h2>
-
-                <input
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={{
-                        padding: "8px",
-                        background: "black",
-                        border: "1px solid #00ff9c",
-                        color: "#00ff9c"
-                    }}
-                />
-
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{
-                        padding: "8px",
-                        background: "black",
-                        border: "1px solid #00ff9c",
-                        color: "#00ff9c"
-                    }}
-                />
-
-                <button
-                    type="submit"
-                    style={{
-                        padding: "10px",
-                        background: "#001a12",
-                        border: "1px solid #00ff9c",
-                        color: "#00ff9c",
-                        cursor: "pointer"
-                    }}
-                >
-                    Login
-                </button>
+                <h2 className="font-dialog-header font-color-elementary">Welcome to ENDLESS</h2>
+                <InputText placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <InputText placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <Button2d text="Login" type="submit" />
             </form>
         </main>
     );

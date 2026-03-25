@@ -1,47 +1,49 @@
 import React from "react";
 
-type LabelPosition = "top" | "left";
+export type LabelPosition = "top" | "left";
 
-export interface IRange2d {
+export interface IInputText {
   className?: string;
   wrapperClassName?: string;
   inputClassName?: string;
   icon?: React.ReactNode;
   label?: string;
   labelPosition?: LabelPosition;
-  min?: number;
-  max?: number;
-  step?: number;
-  value?: number;
-  defaultValue?: number;
+  placeholder?: string;
+  value?: string;
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   disabled?: boolean;
+  error?: string;
   name?: string;
-  showValue?: boolean;
+  type?: string;
 }
 
-export function Range2d({
+export function InputText({
   className = "",
   wrapperClassName = "",
   inputClassName = "",
   icon,
   label,
   labelPosition = "top",
-  min = 0,
-  max = 100,
-  step = 1,
+  placeholder,
   value,
   defaultValue,
   onChange,
+  onFocus,
+  onBlur,
   disabled,
+  error,
   name,
-  showValue = true,
-}: IRange2d) {
+  type = "text",
+}: IInputText) {
   return (
     <div
-      className={`range2d range2d--${labelPosition} ${wrapperClassName} ${
+      className={`input-text input-text--${labelPosition} ${wrapperClassName} ${
         disabled ? "is-disabled" : ""
-      }`}
+      } ${error ? "has-error" : ""}`}
     >
       {label && (
         <label className="font-component-label" htmlFor={name}>
@@ -49,29 +51,25 @@ export function Range2d({
         </label>
       )}
 
-      <div className={`range2d__field ${className}`}>
-        {icon && <span className="range2d__icon">{icon}</span>}
+      <div className={`input-text__field ${className}`}>
+        {icon && <span className="icon-component">{icon}</span>}
 
         <input
           id={name}
           name={name}
-          type="range"
-          min={min}
-          max={max}
-          step={step}
+          type={type}
           value={value}
           defaultValue={defaultValue}
+          placeholder={placeholder}
           onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
           disabled={disabled}
-          className={`font-component-input ${inputClassName}`}
+          className={`input-text__input font-component-input ${inputClassName}`}
         />
-
-        {showValue && (
-          <span className="font-component-label">
-            {value ?? defaultValue ?? min}
-          </span>
-        )}
       </div>
+
+      {error && <span className="input-text__error">{error}</span>}
     </div>
   );
 }

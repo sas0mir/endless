@@ -6,3 +6,26 @@
   line-height: 2rem;
 }
 
+.font-component-label {
+  font-family: $font-elements;
+  font-size: 1rem;
+  line-height: 1.1rem;
+  color: $color-light-primary;
+}
+.font-component-input {
+  font-family: $font-elements;
+  font-size: 1rem;
+  line-height: 1.1rem;
+  color: $color-light-default;
+}
+
+.font-color-elementary {
+  color: $color-light-elementary;
+}
+
+//icons
+.icon-component {
+  height: 1rem;
+  width: 1rem;
+}
+
