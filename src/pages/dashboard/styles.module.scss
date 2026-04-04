@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   background-color: $color-light-default;
 }
 .container {
@@ -16,4 +16,12 @@
   padding: 1rem;
   border-radius: 1rem;
   background-color: $color-light-primary;
+  -webkit-mask: radial-gradient(6.5rem at top left, transparent 98%, black 100%);
+  mask: radial-gradient(6.5rem at top left, transparent 98%, black 100%);
+}
+.header {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+  justify-content: end;
 }

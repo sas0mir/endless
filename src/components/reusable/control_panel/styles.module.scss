@@ -1,0 +1,83 @@
+@use "@/shared/styles/variables" as *;
+
+.container {
+  position: fixed;
+  top: -2rem;
+  left: -2rem;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  justify-items: center;
+  vertical-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-light-primary;
+  border-radius: 0 0 50% 0;
+  transition: all ease-in-out;
+  overflow: visible;
+  z-index: 99;
+
+  .avatar {
+    position: relative;
+    height: 95%;
+    width: 95%;
+    display: flex;
+    border-radius: 0 0 50% 0;
+  }
+
+  .control_item {
+    position: absolute;
+    font-size: 1.3rem;
+    width: 7rem;
+    padding-left: 1.5rem;
+    background: transparent;
+    border: none;
+    font-family: $font-titles;
+    text-align: left;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    /* start hidden near right edge (3 o'clock) */
+    transform:
+            translate(-50%, -50%)
+            rotate(calc(90deg + var(--i) * 10deg))
+            translateX(4rem)
+            scale(0.6);
+
+    transform-origin: center;
+    opacity: 0;
+    pointer-events: none;
+
+    color: $color-light-elementary;
+
+    transition:
+            transform 0.5s ease,
+            opacity 0.3s ease;
+
+    transition-delay: calc(var(--i) * 0.06s);
+  }
+
+  &:hover {
+    top: -2rem;
+    left: -2rem;
+    .avatar {
+      height: 90%;
+      width: 90%;
+    }
+    .control_item {
+      transform:
+              translate(-50%, -50%)
+              rotate(calc(0deg + var(--i) * 25deg))
+              translateX(6rem)
+              scale(1);
+
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
