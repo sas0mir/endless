@@ -11,18 +11,18 @@
   vertical-align: center;
   justify-content: center;
   align-items: center;
-  background-color: $color-light-primary;
-  border-radius: 0 0 50% 0;
+  background-color: $color-light-default;
+  border-radius: 0 0 45% 0;
   transition: all ease-in-out;
   overflow: visible;
   z-index: 99;
 
   .avatar {
     position: relative;
-    height: 95%;
-    width: 95%;
+    height: 90%;
+    width: 90%;
     display: flex;
-    border-radius: 0 0 50% 0;
+    border-radius: 0 0 40% 0;
   }
 
   .control_item {
@@ -39,7 +39,7 @@
     left: 50%;
 
     &:hover {
-      scale: 1.2;
+      scale: 1.1;
     }
 
     /* start hidden near right edge (3 o'clock) */
@@ -66,8 +66,8 @@
     top: -2rem;
     left: -2rem;
     .avatar {
-      height: 90%;
-      width: 90%;
+      height: 85%;
+      width: 85%;
     }
     .control_item {
       transform:

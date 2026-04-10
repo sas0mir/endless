@@ -18,13 +18,10 @@ export default function LoginPage() {
             email,
         };
 
-        // save to localStorage (mock backend session)
         localStorage.setItem("mock_user", JSON.stringify(user));
 
-        // save to zustand store
         login(user);
 
-        // redirect to dashboard
         window.location.href = "/endless/dashboard";
     };
 

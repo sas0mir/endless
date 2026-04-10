@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {type ReactNode, useState} from "react"
 import {
     useFloating,
     offset,
